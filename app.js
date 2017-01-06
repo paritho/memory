@@ -15,7 +15,7 @@ function Game(){
             this.populateCards();
             
             var flippers = document.getElementById('container');
-            flippers.addEventListener('click', flip);
+            flippers.addEventListener('click', this.checkCards);
             
         },
         generateNumbers: function(){
@@ -32,7 +32,6 @@ function Game(){
                                         
                 _numbers.push(n+"a");
                 _numbers.push(n+"b");
-                
             }
 
             // shuffle 
@@ -59,32 +58,33 @@ function Game(){
                 fadeIn(card);
             }
         },
-        checkCards: function(el){
+        checkCards: function(e){
             _tries++;
+            flip(e);
             
+            var el = e.target.parentNode;
+                        
             _clickedOn.push(el.id);
-            var first = parseInt(_clickedOn[0]),
-                second = parseInt(_clickedOn[1]) || 0;
+            
+            if(_clickedOn.length < 2) return;
+            
+            var first = _clickedOn.shift(),
+                second = _clickedOn.shift();
 
-            // found a match!
-            if(first == second) {
-                _found++;
-                _clickedOn = [];
-            }
-            // no match :(
-            if(_clickedOn.length == 2){
-            // flip back the cards that were showing
+             // no match :( flip back the cards that were showing
+            if(parseInt(first) !== parseInt(second)) {            
                 setTimeout(function(){
-                    document.getElementById(_clickedOn[0]).className = "memoryCard";
-                    el.className = "memoryCard";
-                    _clickedOn = [];
+                    document.getElementById(first).className = "memoryCard";
+                    document.getElementById(second).className = "memoryCard";
+                    
                 }, 1500);
+                return;
             }
             
+            // match!
+            _found++;
             if(_len == _found) playerWins(_tries);
-                
         }
-        
     }
 }
 
@@ -108,7 +108,6 @@ function getNumber(e){
 function flip(e){
     if(e.target !== e.currentTarget){
         e.target.parentNode.className += " flip";
-        game.checkCards(e.target.parentNode);
     }
     e.stopPropagation();
 }
