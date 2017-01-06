@@ -1,0 +1,152 @@
+
+footer div{
+    font-family: sans-serif;
+    width: 70%;
+    margin: 0 auto;
+    text-align: right;
+    color: #777;
+}
+
+a {
+    text-decoration: none;
+    color: coral;
+}
+
+.headline {
+    font-family: sans-serif;
+    color: #777;
+    font-size: 3em;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.memory {
+    width: 70%;
+    margin: 30px auto;
+    background-color:beige;
+    border: 1px solid gray;
+    border-radius: 4px;
+    position: relative;
+    min-height: 250px;
+}
+
+#container {
+    position: relative;
+    perspective: 1000;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.memoryCard {
+    position: relative;
+    width: 21%;
+    height: 150px;
+    display: none;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+}
+
+.memoryCard div {
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+.unflip {
+    transform: rotateY(-180deg);
+}
+
+.memoryCard .front {
+    z-index: 2;
+    background-color: coral;
+}
+
+.memoryCard .back {
+    transform: rotateY(180deg);
+    background-color: cadetblue;
+    color: white;
+    font-size: 3em;
+}
+
+#pairs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+}
+
+#pairs h1 {
+    margin: 10px;
+    font-family: sans-serif;
+    color: gray;
+}
+
+.card {
+    width: 44%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 4em;
+    color: white;
+}
+
+#gameover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%; 
+}
+
+#message {
+    color: darkseagreen;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 4em;
+    text-align: center;
+    
+}
+
+#playagain {
+    width: 70%;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 4em;
+    border: 1px solid #777;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#playagain a {
+    color: white;
+}
+
+.red {
+    background-color: indianred;
+}
+
+.blue {
+    background-color: cadetblue;
+}
+
+.green {
+    background-color: darkseagreen;
+}
+
+.orange {
+    background-color: coral;
+}
